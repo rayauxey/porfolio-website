@@ -58,12 +58,35 @@ const Contact: React.FC = () => {
 		setFormState((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsSubmitting(true);
 
 		// Simulate form submission
-		setTimeout(() => {
+		// setTimeout(() => {
+		// 	setIsSubmitting(false);
+		// 	setSubmitMessage("Your message has been sent. Thank you!");
+		// 	setFormState({
+		// 		name: "",
+		// 		email: "",
+		// 		subject: "",
+		// 		message: "",
+		// 	});
+
+		// 	setTimeout(() => {
+		// 		setSubmitMessage("");
+		// 	}, 5000);
+		// }, 1500);
+
+		const res = await fetch("https://api.portfolio.rayauxey.com/new-message", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formState),
+		});
+
+		if (res.ok) {
 			setIsSubmitting(false);
 			setSubmitMessage("Your message has been sent. Thank you!");
 			setFormState({
@@ -76,7 +99,10 @@ const Contact: React.FC = () => {
 			setTimeout(() => {
 				setSubmitMessage("");
 			}, 5000);
-		}, 1500);
+		} else {
+			setIsSubmitting(false);
+			setSubmitMessage("Something went wrong. Please try again.");
+		}
 	};
 
 	const contactInfo = [
