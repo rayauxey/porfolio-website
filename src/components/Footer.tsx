@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
 						{["github", "linkedin", "twitter"].map((social) => (
 							<motion.a
 								key={social}
-								href={`https://${social}.com/rayauxey`}
+								href={`https://${social}.com/${social === "linkedin" ? "in/" : ""}rayauxey`}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="p-2 rounded-full bg-white dark:bg-dark-100 text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"

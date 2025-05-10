@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
 										(social) => (
 											<motion.a
 												key={social}
-												href={`https://${social}.com/rayauxey`}
+												href={`https://${social}.com/${social === "linkedin" ? "in/" : ""}rayauxey`}
 												target="_blank"
 												rel="noopener noreferrer"
 												className="p-2 rounded-full bg-gray-100 dark:bg-dark-200 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-all"
